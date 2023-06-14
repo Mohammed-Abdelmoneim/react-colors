@@ -1,11 +1,12 @@
 import Palette from "./Palette";
 import seedColors from "./seedColors";
 import { generatePalette } from "./ColorHelprs";
+import { random } from "chroma-js";
 
 function App() {
   return (
     <div>
-      <Palette palette={generatePalette(seedColors[5])} />
+      <Palette palette={generatePalette(seedColors[4])} />
     </div>
   );
 }
