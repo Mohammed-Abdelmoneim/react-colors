@@ -4,6 +4,7 @@ import PaletteList from "./PaletteList";
 import seedColors from "./seedColors";
 import { Route, Switch } from "react-router-dom";
 import { generatePalette } from "./ColorHelprs";
+
 import { random } from "chroma-js";
 import Pallette from "./Palette";
 import { PlaylistAdd } from "@material-ui/icons";
