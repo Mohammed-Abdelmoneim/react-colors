@@ -4,10 +4,11 @@ import PaletteList from "./PaletteList";
 import seedColors from "./seedColors";
 import { Route, Switch } from "react-router-dom";
 import { generatePalette } from "./ColorHelprs";
+import SingleColorPalette from "./SingleColorPalette";
 
 import { random } from "chroma-js";
 import Pallette from "./Palette";
-import { PlaylistAdd } from "@material-ui/icons";
+import { PlaylistAdd, RouterSharp } from "@material-ui/icons";
 
 class App extends Component {
   findPalette(id) {
@@ -21,7 +22,9 @@ class App extends Component {
         <Route
           exact
           path="/"
-          render={() => <PaletteList palettes={seedColors} />}
+          render={(routeProps) => (
+            <PaletteList palettes={seedColors} {...routeProps} />
+          )}
         />
         <Route
           exact
@@ -30,6 +33,18 @@ class App extends Component {
             <Palette
               palette={generatePalette(
                 this.findPalette(routeProps.match.params.id)
+              )}
+            />
+          )}
+        />
+        <Route
+          exact
+          path="/palette/:paletteId/:colorId"
+          render={(routeProps) => (
+            <SingleColorPalette
+              colorId={routeProps.match.params.colorId}
+              palette={generatePalette(
+                this.findPalette(routeProps.match.params.paletteId)
               )}
             />
           )}
