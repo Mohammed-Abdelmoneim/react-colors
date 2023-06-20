@@ -6,10 +6,10 @@ import { Route, Switch } from "react-router-dom";
 import { generatePalette } from "./ColorHelprs";
 import SingleColorPalette from "./SingleColorPalette";
 
-import { random } from "chroma-js";
+/* import { random } from "chroma-js";
 import Pallette from "./Palette";
 import { PlaylistAdd, RouterSharp } from "@material-ui/icons";
-
+ */
 class App extends Component {
   findPalette(id) {
     return seedColors.find(function (palette) {
