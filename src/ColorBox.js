@@ -5,7 +5,7 @@ import chroma from "chroma-js";
 import { withStyles } from "@material-ui/styles";
 import "./ColorBox.css";
 
-const styles = {
+/* const styles = {
   ColorBox: {
     width: "20%",
     height: (props) => (props.showLink ? "25%" : "50%"),
@@ -71,6 +71,7 @@ const styles = {
     },
   },
 };
+ */
 
 class ColorBox extends Component {
   constructor(props) {
@@ -84,7 +85,7 @@ class ColorBox extends Component {
     });
   }
   render() {
-    const { name, background, moreUrl, showLink, classes } = this.props;
+    const { name, background, moreUrl, showLink } = this.props;
     const { copied } = this.state;
     const isDarkColor = chroma(background).luminance() <= 0.08;
     const isLightColor = chroma(background).luminance() >= 0.5;
@@ -120,4 +121,4 @@ class ColorBox extends Component {
   }
 }
 
-export default withStyles(styles)(ColorBox);
+export default ColorBox;
