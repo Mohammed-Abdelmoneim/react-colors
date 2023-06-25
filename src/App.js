@@ -12,20 +12,35 @@ import Pallette from "./Palette";
 import { PlaylistAdd, RouterSharp } from "@material-ui/icons";
  */
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { palettes: seedColors };
+    this.savePalete = this.savePalete.bind(this);
+    this.findPalette = this.findPalette.bind(this);
+  }
   findPalette(id) {
-    return seedColors.find(function (palette) {
+    return this.state.palettes.find(function (palette) {
       return palette.id === id;
     });
+  }
+  savePalete(newPalette) {
+    this.setState({ palettes: [...this.state.palettes, newPalette] });
   }
   render() {
     return (
       <Switch>
-        <Route exact path="/palette/new" render={() => <NewPaletteForm />} />
+        <Route
+          exact
+          path="/palette/new"
+          render={(routerProps) => (
+            <NewPaletteForm savePalette={this.savePalete} {...routerProps} />
+          )}
+        />
         <Route
           exact
           path="/"
           render={(routeProps) => (
-            <PaletteList palettes={seedColors} {...routeProps} />
+            <PaletteList palettes={this.state.palettes} {...routeProps} />
           )}
         />
         <Route
